@@ -7,8 +7,6 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import static com.gildedrose.IT.TestFixture.getItemsFixture;
 import static org.junit.Assert.assertEquals;

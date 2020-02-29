@@ -23,7 +23,7 @@ public class BackstagePassesToATAFKAL80ETCConcertItem extends Item {
         setSellIn(getSellIn() - 1);
 
         if (getSellIn() < 0) {
-            setQuality(getQuality() - getQuality());
+            setQuality(0);
         }
     }
 }

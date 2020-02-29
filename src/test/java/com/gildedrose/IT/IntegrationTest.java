@@ -16,7 +16,8 @@ public class IntegrationTest {
     public void printTestWhenDay1() {
         Item[] items = getItemsFixture();
         GildedRose gildedRose = new GildedRose(items);
-        gildedRose.update_quality();
+        int days = 1;
+        updateQualityForDays(gildedRose, days);
         List<String> itemStringListWhenDay1 = Arrays.asList(items).stream().map(Item::toString).collect(Collectors.toList());
 
         assertEquals(Arrays.asList(
@@ -37,8 +38,8 @@ public class IntegrationTest {
     public void printTestWhenDay2() {
         Item[] items = getItemsFixture();
         GildedRose gildedRose = new GildedRose(items);
-        gildedRose.update_quality();
-        gildedRose.update_quality();
+        int days = 2;
+        updateQualityForDays(gildedRose, days);
         List<String> itemStringListWhenDay2 = Arrays.asList(items).stream().map(Item::toString).collect(Collectors.toList());
 
         assertEquals(Arrays.asList(
@@ -60,9 +61,7 @@ public class IntegrationTest {
         Item[] items = getItemsFixture();
         GildedRose gildedRose = new GildedRose(items);
         int days = 6;
-        for (int i = 0; i < days; i++) {
-            gildedRose.update_quality();
-        }
+        updateQualityForDays(gildedRose, days);
         List<String> itemStringListWhenDay2 = Arrays.asList(items).stream().map(Item::toString).collect(Collectors.toList());
 
         assertEquals(Arrays.asList(
@@ -79,14 +78,13 @@ public class IntegrationTest {
         ), itemStringListWhenDay2);
     }
 
+
     @Test
     public void printTestWhenDay16() {
         Item[] items = getItemsFixture();
         GildedRose gildedRose = new GildedRose(items);
         int days = 16;
-        for (int i = 0; i < days; i++) {
-            gildedRose.update_quality();
-        }
+        updateQualityForDays(gildedRose, days);
         List<String> itemStringListWhenDay2 = Arrays.asList(items).stream().map(Item::toString).collect(Collectors.toList());
 
         assertEquals(Arrays.asList(
@@ -101,5 +99,11 @@ public class IntegrationTest {
                 "Backstage passes to a TAFKAL80ETC concert, -15, 0",
                 "Conjured Mana Cake, -13, 0"
         ), itemStringListWhenDay2);
+    }
+
+    private void updateQualityForDays(GildedRose gildedRose, int days) {
+        for (int i = 0; i < days; i++) {
+            gildedRose.updateQuality();
+        }
     }
 }

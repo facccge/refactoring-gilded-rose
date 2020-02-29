@@ -103,7 +103,7 @@ public class IntegrationTest {
 
     private void updateQualityForDays(GildedRose gildedRose, int days) {
         for (int i = 0; i < days; i++) {
-            gildedRose.updateQuality();
+            gildedRose.updateItemsQuality();
         }
     }
 }

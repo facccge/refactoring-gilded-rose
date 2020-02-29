@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class Item {
+public abstract class Item {
     private String name;
     private int sellIn;
     private int quality;
@@ -15,15 +15,11 @@ public class Item {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getSellIn() {
         return sellIn;
     }
 
-    public void setSellIn(int sellIn) {
+    protected void setSellIn(int sellIn) {
         this.sellIn = sellIn;
     }
 
@@ -31,7 +27,7 @@ public class Item {
         return quality;
     }
 
-    public void setQuality(int quality) {
+    protected void setQuality(int quality) {
         this.quality = quality;
     }
 
@@ -39,4 +35,6 @@ public class Item {
     public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
+
+    abstract public void updateQuality();
 }

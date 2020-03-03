@@ -1,33 +1,13 @@
 package com.gildedrose;
 
-public abstract class Item {
-    private String name;
-    private int sellIn;
-    private int quality;
+public class Item {
+    protected String name;
+    protected int sellIn;
+    protected int quality;
 
     public Item(String name, int sellIn, int quality) {
         this.name = name;
         this.sellIn = sellIn;
-        this.quality = quality;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getSellIn() {
-        return sellIn;
-    }
-
-    protected void setSellIn(int sellIn) {
-        this.sellIn = sellIn;
-    }
-
-    public int getQuality() {
-        return quality;
-    }
-
-    protected void setQuality(int quality) {
         this.quality = quality;
     }
 
@@ -36,5 +16,33 @@ public abstract class Item {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
 
-    abstract public void updateQuality();
+    void updateItemQuality() {
+        updateQuality();
+
+        updateSellIn();
+
+        if (isExpire()) {
+            updateQualityAfterExpiration();
+        }
+    }
+
+    protected void updateSellIn() {
+        sellIn = sellIn - 1;
+    }
+
+    protected void updateQualityAfterExpiration() {
+        if (quality > 0) {
+            quality = quality - 1;
+        }
+    }
+
+    protected void updateQuality() {
+        if (quality > 0) {
+            quality = quality - 1;
+        }
+    }
+
+    private boolean isExpire() {
+        return sellIn < 0;
+    }
 }

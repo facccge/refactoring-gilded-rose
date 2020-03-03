@@ -1,10 +1,6 @@
 package com.gildedrose;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Stream;
-
-import static com.gildedrose.AgedBrieItem.AGED_BRIE;
 
 public class GildedRose {
 
@@ -19,6 +15,6 @@ public class GildedRose {
     }
 
     public void updateItemsQuality() {
-        Arrays.asList(items).stream().forEach(Item::updateQuality);
+        Arrays.asList(items).stream().forEach(Item::updateItemQuality);
     }
 }
